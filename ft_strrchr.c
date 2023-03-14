@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 21:13:02 by dbui              #+#    #+#             */
-/*   Updated: 2023/03/10 21:13:04 by dbui             ###   ########.fr       */
+/*   Created: 2023/03/14 19:33:53 by dbui              #+#    #+#             */
+/*   Updated: 2023/03/14 20:28:50 by dbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include "libft.h"
+
+char	*strchr(const char *s, int c)
 {
-	while (*s)
+	int		len;
+	char	*p;
+
+	len = ft_strlen(s);
+	while (len >= 0)
 	{
-		if (*s == c)
-			return (s);
-		s++;
+		if (s[len] == c)
+		{
+			p = (char *)&s[len];
+			return ((char *)p);
+		}
+		len--;
 	}
-	if (c == '\0')
-		return (s);
 	return (0);
 }
